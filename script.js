@@ -20,9 +20,13 @@ const equal = document.getElementById("equal");
 
 const button = document.querySelectorAll('button')
 const operators = [mult.textContent, divide.textContent, sub.textContent, sum.textContent]
-const screen = [];
+let screen = [];
 let number2 = [];
 let poperator = [];
+clear.addEventListener("click", function() {
+   
+
+}, false);
 for (var i = 0 ; i < button.length; i++) {
     let item = button[i];
     item.addEventListener('click' , function() {caluclate(item)}, false) ; 
@@ -33,13 +37,19 @@ for (var i = 0 ; i < button.length; i++) {
       console.log(screen)
       evaluate();
    }
+   else if (pep.id == "clear") {
+      screen = [];
+      number2 = [];
+      poperator = [];
+      writetoScreen();
+   }
    else {
       let number1 = pep.textContent;
       screen.push(number1);
       console.log(number1);
       writetoScreen();
       
-   }
+   };
 
  }
 
@@ -99,4 +109,40 @@ function writeAnswer(answer) {
    const ans = document.getElementById("answer");
    ans.textContent = answer;
 }
- 
+const elements = document.querySelectorAll('body *')
+const warm = document.querySelector(".warm");
+warm.addEventListener("click", function(){
+   for (let i = 0; i < elements.length; i++) {
+      elements[i].classList.remove("black")
+      elements[i].classList.remove("pink")
+      elements[i].classList.remove("cool")
+      elements[i].classList.add("warm")
+   }
+})
+const cold = document.querySelector(".cool");
+cold.addEventListener("click", function(){
+   for (let i = 0; i < elements.length; i++) {
+      elements[i].classList.remove("black")
+      elements[i].classList.remove("pink")
+      elements[i].classList.remove("warm")
+      elements[i].classList.add("cool")
+   }
+})
+const black = document.querySelector(".black");
+black.addEventListener("click", function(){
+   for (let i = 0; i < elements.length; i++) {
+      elements[i].classList.remove("warm")
+      elements[i].classList.remove("pink")
+      elements[i].classList.remove("cool")
+      elements[i].classList.add("black")
+   }
+})
+const pink = document.querySelector(".pink");
+pink.addEventListener("click", function(){
+   for (let i = 0; i < elements.length; i++) {
+      elements[i].classList.remove("black")
+      elements[i].classList.remove("warm")
+      elements[i].classList.remove("cool")
+      elements[i].classList.add("pink")
+   }
+})

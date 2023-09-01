@@ -7,12 +7,58 @@
     flex-flow: column wrap;
     flex: 1 1 auto;
     justify-content: center;
+    border: 4px solid pink;
     
 }
-
+.big {
+    display: flex;
+}
 .row {
     display: flex;
     gap: 10px;
     flex: 1 1 auto;
     justify-content: center;
+}
+.btn {
+    background: pink;
+}
+h1 {
+    text-align: center;
+    border: 4px solid pink;
+    height: 1em;
+    background: #c9ebb9;
+    
+}
+.main {
+    flex-grow: 2;
+}
+.secondary {
+    flex-shrink: 2;
+    gap: 3px;
+    max-width: 300px;
+}
+p {
+    font-size: medium;
+}
+.sexy{
+    background: pink;
+    text-align: center;
+}
+.warm {
+    border-color: red;
+    color: orange;
+    background: yellow;
+}
+.cool {
+    border-color: darkblue;
+    color: rgb(120, 193, 211);
+    background: rgb(51, 51, 71);
+}
+.black {
+    border-color: white;
+    color: white;
+    background: black;
+}
+.pink {
+
 }
