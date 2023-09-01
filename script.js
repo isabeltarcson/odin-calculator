@@ -19,17 +19,27 @@ const clear = document.getElementById("clear");
 const equal = document.getElementById("equal");
 
 const button = document.querySelectorAll('button')
+const operators = [mult.textContent, divide.textContent, sub.textContent, sum.textContent]
 const screen = [];
+let number2 = [];
+let poperator = [];
 for (var i = 0 ; i < button.length; i++) {
     let item = button[i];
     item.addEventListener('click' , function() {caluclate(item)}, false) ; 
  }
 
  function caluclate(pep) {
-    let wah = pep.textContent;
-    screen.push(wah);
-    console.log(screen);
-    writetoScreen();
+   if (pep.id == "equal") {
+      console.log(screen)
+      evaluate();
+   }
+   else {
+      let number1 = pep.textContent;
+      screen.push(number1);
+      console.log(number1);
+      writetoScreen();
+      
+   }
 
  }
 
@@ -38,4 +48,55 @@ for (var i = 0 ; i < button.length; i++) {
     let answer = screen.join("")
     ans.textContent = answer;
  }
+
+ function evaluate() {
+   let op;
+   for (let i = 0; i < operators.length; i++){
+      let index = screen.indexOf(operators[i])
+      if (index > 0) {
+         op = index;
+      }
+   }
+   console.log(op)
+   number2 = screen.splice(op)
+   
+   poperator = number2.splice(0,1);
+   console.log(screen, number2, poperator)
+   let answer = doMath();
+   writeAnswer(answer);
+
+ }
+
+ function doMath () {
+   let temp1 = screen.join("");
+   const num1 = parseInt(temp1);
+   let temp2 = number2.join("");
+   const num2 = parseInt(temp2);
+   console.log(num1, poperator, num2)
+   let answer;
+   switch (poperator[0]) {
+      case "+":
+         answer = num1+num2;
+         break;
+      case "-":
+         answer = num1-num2;
+         break;
+      case "/":
+         answer = num1/num2;
+         break;
+      case "x":
+         answer = num1*num2;
+         break;
+      case "":
+         answer = num1;
+         break;
+   }
+   console.log(answer)
+   return answer;
+ }
+
+function writeAnswer(answer) {
+   const ans = document.getElementById("answer");
+   ans.textContent = answer;
+}
  
